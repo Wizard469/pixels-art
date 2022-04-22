@@ -36,7 +36,7 @@ const pixelBoard = document.createElement('div');
       body.appendChild(pixelBoard);
 
 function createBoard() {
-    let n = 5   
+    let n = 5;
     
     for (let lines = 0; lines < n; lines += 1) {
         let line = document.createElement('div');
@@ -60,3 +60,13 @@ paletteBox.addEventListener ('click', function selected (event) {
     }
     event.target.className = 'color selected';
 })
+
+const pixels = document.querySelectorAll('.pixel');
+
+function fillColor(event){
+    //finding the selected color
+    let color = document.querySelector('.selected').style.backgroundColor;
+    event.target.style.backgroundColor = color;
+}
+
+pixelBoard.addEventListener('click', fillColor);
