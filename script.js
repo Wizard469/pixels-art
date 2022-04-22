@@ -6,13 +6,16 @@ paletteBox.id = 'color-palette';
 
 body.appendChild(paletteBox);
 
-/*----------------------Paleta de Cores------------------------------*/
+/*----------------------Palette of Colors------------------------------*/
 
 for (let color = 1; color <= 4; color += 1) {
     let colorElement = document.createElement ('div');
-    
-    colorElement.className = 'color';
-    
+    if (color === 1) {
+        colorElement.className = 'color selected';
+    } else {
+        colorElement.className = 'color'
+    }
+      
     paletteBox.appendChild (colorElement);
 }
 
@@ -25,6 +28,8 @@ color1.style.backgroundColor = 'black';
 color2.style.backgroundColor = 'red';
 color3.style.backgroundColor = 'blue';
 color4.style.backgroundColor = 'green';
+
+//Creating pixels board
 
 const pixelBoard = document.createElement('div');
       pixelBoard.id = "pixel-board";
@@ -46,3 +51,12 @@ function createBoard() {
     }
 }
 createBoard();
+
+paletteBox.addEventListener ('click', function selected (event) {
+    //Clear selected color
+    let elements = document.querySelectorAll('.color')
+    for(let index = 0; index < elements.length; index += 1){
+        elements[index].className = 'color';
+    }
+    event.target.className = 'color selected';
+})
