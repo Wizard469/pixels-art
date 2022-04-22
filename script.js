@@ -29,6 +29,26 @@ color2.style.backgroundColor = 'red';
 color3.style.backgroundColor = 'blue';
 color4.style.backgroundColor = 'green';
 
+const containerHeader = document.createElement('div');
+body.appendChild(containerHeader);
+
+//Creating input
+
+const btn = document.createElement('div');
+btn.innerHTML = 'Limpar';
+btn.id = 'clear-board';
+
+containerHeader.appendChild(btn);
+
+btn.addEventListener('click', function(){
+    let pixels = document.getElementsByClassName('pixel');
+
+    for(let index = 0; index < pixels.length; index += 1){
+        pixels[index].style.backgroundColor = 'white';
+    }
+
+})
+
 //Creating pixels board
 
 const pixelBoard = document.createElement('div');
@@ -60,8 +80,6 @@ paletteBox.addEventListener ('click', function selected (event) {
     }
     event.target.className = 'color selected';
 })
-
-const pixels = document.querySelectorAll('.pixel');
 
 function fillColor(event){
     //finding the selected color
